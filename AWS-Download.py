@@ -2,13 +2,28 @@
     AWS_Download.py version: 0.6 (29 October 2020) by: David J. Cartwright davidcartwright@hotmail.com
         Created and tested on ArcPro 2.6.2
 
+    https://github.com/SeeTheGround/AWS-Download
+
     This script downloads specified LANDSAT Rasters from AWS. Script is meant to be run by an ArcPro Toolbox
     Inputs:
         URL: of AWS scene list, example: https://landsat-pds.s3.amazonaws.com/c1/L8/scene_list.gz
 
     Outputs:
         Band 1-11 of scenes selected, saved to disk optionally added to current map.
-"""
+
+    Requirements:
+        Toolbox with the following parameters: https://github.com/SeeTheGround/AWS-Download/blob/main/Tool%20Properties.png
+            [note] default scene list - https://landsat-pds.s3.amazonaws.com/c1/L8/scene_list.gz"""
+
+P_SCENE_LIST = 0        # AWS Scene List [String] - path the AWS scene list
+P_START_DATE = 1        # Start Date [Date] - Start date for scene search
+P_END_DATE = 2          # End Date [Date] - End date for search
+P_SCENE_PATH = 3        # Path [Long] path number of landsat scene for search
+P_SCENE_ROW = 4         # Row [Long] row number of landsat scene for search
+P_MAX_SCENES = 5        # Max Results [Long] Maximum number of unique scenes to download
+P_OUTPUT_FOLDER = 6     # Location where downloaded scenes will be saved
+P_ADD_TO_MAP = 7        # [Boolean] If TRUE, downloaded scene/bands will be added to current MAP
+P_CREATE_COMP = 8       # [Boolean] If TRUE, all downloaded scenes will have bands combines in a file
 
 import arcpy
 import datetime
@@ -17,17 +32,17 @@ import pandas as pd
 import time
 import urllib.request
 
-P_OUTPUT_INDEX = 6
 
-scene_list = arcpy.GetParameter(0)
-start_date = arcpy.GetParameter(1)
-end_date = arcpy.GetParameter(2)
-scene_path = arcpy.GetParameter(3)
-scene_row = arcpy.GetParameter(4)
-max_results = arcpy.GetParameter(5)
-output_folder = arcpy.GetParameter(P_OUTPUT_INDEX)
-add_to_map = arcpy.GetParameter(7)
-create_composite = arcpy.GetParameter(8)
+
+scene_list = arcpy.GetParameter(P_SCENE_LIST)
+start_date = arcpy.GetParameter(P_START_DATE)
+end_date = arcpy.GetParameter(P_END_DATE)
+scene_path = arcpy.GetParameter(P_SCENE_PATH)
+scene_row = arcpy.GetParameter(P_SCENE_ROW)
+max_results = arcpy.GetParameter(P_MAX_SCENES)
+output_folder = arcpy.GetParameter(P_OUTPUT_FOLDER)
+add_to_map = arcpy.GetParameter(P_ADD_TO_MAP)
+create_composite = arcpy.GetParameter(P_CREATE_COMP)
 
 band_list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 
