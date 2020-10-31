@@ -9,7 +9,7 @@
  "AWS-Download.py" - Python Toolbox Script
  
  ## Optional:
- "WRS2_descending_0.url" - Feature Class used to indentify Path/Row for desired scene.
+ [WRS2_descending_0.url](https://www.arcgis.com/home/item.html?id=5043aa5c3f4e4c148a436782f777e262)
  
  
  
