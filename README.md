@@ -9,7 +9,7 @@
  "AWS-Download.py" - Python Toolbox Script
  
  ## Optional:
- [WRS2_descending_0.url](https://www.arcgis.com/home/item.html?id=5043aa5c3f4e4c148a436782f777e262)
+ [WRS2_descending_0.url](https://www.arcgis.com/home/item.html?id=5043aa5c3f4e4c148a436782f777e262) Feature Class to visulaize LandSat Scene Path/Row
  
  
  
