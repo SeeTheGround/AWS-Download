@@ -44,7 +44,8 @@ output_folder = arcpy.GetParameter(P_OUTPUT_FOLDER)
 add_to_map = arcpy.GetParameter(P_ADD_TO_MAP)
 create_composite = arcpy.GetParameter(P_CREATE_COMP)
 
-band_list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+# Add QA band to list
+band_list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "QA"}
 
 arcpy.AddMessage("Downloading Scene List from AWS")
 try:
